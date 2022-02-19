@@ -93,12 +93,14 @@ def stats(start=None, end=None):
             filter(Measurement.date <= end).all()
         temps = list(np.ravel(results))
         return jsonify(temps=temps)
+  
 #Calculate the temp min, avg, and max with the start and end dates. Use the sel list.
     results = session.query(*sel).\
          filter(Measurement.date >= start).\
          filter(Measurement.date <= end).all()
     temps = list(np.ravel(results))
     return jsonify(temps=temps)
+
 if __name__ == "__main__":
     app.run(debug=True)
 
